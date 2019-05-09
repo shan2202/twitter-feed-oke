@@ -28,6 +28,8 @@ spec:
           - name: podinfo
             mountPath: /tmp
             readOnly: false
+      imagePullSecrets:
+        - name: wercker
     volumes:
       - name: podinfo
         downwardAPI:
@@ -35,8 +37,7 @@ spec:
           - path: "labels"
             fieldRef:
               fieldPath: metadata.labels
-      imagePullSecrets:
-        - name: wercker    
+    
 ---
 apiVersion: v1
 kind: Service
